@@ -50,11 +50,10 @@ struct SetModeView: View {
                 ForEach(Mode.allCases) { mode in
                     Button {
                         selectedMode = mode
-                        dismiss()
                     } label: {
                         HStack(spacing: 12) {
                             Image(systemName: mode.icon)
-                                .foregroundStyle(.accent)
+                                .foregroundColor(.accentColor)
                                 .frame(width: 24, height: 24)
 
                             VStack(alignment: .leading, spacing: 2) {
@@ -69,7 +68,7 @@ struct SetModeView: View {
 
                             if mode == selectedMode {
                                 Image(systemName: "checkmark.circle.fill")
-                                    .foregroundStyle(.accent)
+                                    .foregroundColor(.accentColor)
                             }
                         }
                         .contentShape(Rectangle())
@@ -77,13 +76,32 @@ struct SetModeView: View {
                     .buttonStyle(.plain)
                 }
             }
-            .navigationTitle("Set Mode")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button("Done") {
-                        dismiss()
+                // Título + descrição no centro da barra
+                ToolbarItem(placement: .principal) {
+                    VStack(spacing: 2) {
+                        Text("Set Mode")
+                            .font(.headline)
+                        Text("Choose how intense you want your nudges to be.")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                            .multilineTextAlignment(.center)
+                            .lineLimit(2)
+                            .minimumScaleFactor(0.9)
                     }
+                }
+
+                // Botão "Done" ocupando a largura na barra inferior
+                ToolbarItemGroup(placement: .bottomBar) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Text("Done")
+                            .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .controlSize(.large)
                 }
             }
         }
