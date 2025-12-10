@@ -12,43 +12,25 @@ struct SessionsView: View {
 
     var body: some View {
         NavigationStack {
-            VStack(spacing: 24) {
-                Image(systemName: "timer")
-                    .font(.system(size: 56, weight: .semibold))
-                    .foregroundStyle(.accent)
+            // Conteúdo vazio por enquanto, já que o título/subtítulo vão no topo
+            Color.clear
+                .ignoresSafeArea()
+                .toolbar {
+                    ToolbarItem(placement: .principal) {
+                        VStack(spacing: 2) {
+                            Text("Sessions")
+                                .font(.headline.weight(.semibold))
+                                .lineLimit(1)
+                                .truncationMode(.tail)
 
-                Text("Sessions")
-                    .font(.largeTitle.bold())
-
-                Text("Configure and start a focused session.")
-                    .font(.body)
-                    .foregroundStyle(.secondary)
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal)
-
-                Spacer()
-
-                Button {
-                    // Placeholder para iniciar uma sessão
-                } label: {
-                    Text("Start Session")
-                        .frame(maxWidth: .infinity)
-                }
-                .buttonStyle(.borderedProminent)
-                .controlSize(.large)
-            }
-            .padding()
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button {
-                        dismiss()
-                    } label: {
-                        Image(systemName: "xmark")
-                            .imageScale(.medium)
+                            Text("Date")
+                                .font(.subheadline)
+                                .foregroundStyle(.secondary)
+                                .lineLimit(1)
+                                .truncationMode(.tail)
+                        }
                     }
-                    .accessibilityLabel("Close")
                 }
-            }
         }
     }
 }

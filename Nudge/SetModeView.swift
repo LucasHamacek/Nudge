@@ -25,8 +25,12 @@ enum Mode: CaseIterable, Equatable, Identifiable {
     }
 
     var description: String {
-        // Placeholder por enquanto
-        return "Description"
+        switch self {
+        case .focused: return "Alert sooner for deeper focus sessions"
+        case .balanced: return "A steady rhythm of focus and breaks"
+        case .light: return "A gentle pace for relaxed days"
+        case .off: return "No limits - just mindful awareness"
+        }
     }
 
     var icon: String {
@@ -53,7 +57,7 @@ struct SetModeView: View {
                     } label: {
                         HStack(spacing: 12) {
                             Image(systemName: mode.icon)
-                                .foregroundColor(.accentColor)
+                                .foregroundColor(.primary)
                                 .frame(width: 24, height: 24)
 
                             VStack(alignment: .leading, spacing: 2) {
@@ -82,7 +86,8 @@ struct SetModeView: View {
                 ToolbarItem(placement: .principal) {
                     VStack(spacing: 2) {
                         Text("Set Mode")
-                            .font(.headline)
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
                         Text("Choose how intense you want your nudges to be.")
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
