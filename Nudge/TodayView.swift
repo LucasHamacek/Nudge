@@ -111,6 +111,10 @@ struct TodayView: View {
                         }
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.vertical, 12)          // padding interno vertical da seção
+                    .padding(.horizontal, 16)        // padding interno horizontal da seção
+                    .background(.quinary)          // fundo da seção
+                    .padding(.horizontal, -16)       // expande o fundo para a largura total (compensa o padding externo)
                 }
                 .padding()
             }
