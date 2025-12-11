@@ -12,7 +12,7 @@ struct ContentView: View {
         TabView {
             TodayView()
                 .tabItem {
-                    Label("Today", systemImage: "sun.max")
+                    Label("Today", systemImage: "square.grid.2x2")
                 }
 
             HabitsView()
@@ -22,7 +22,7 @@ struct ContentView: View {
 
             SettingsView()
                 .tabItem {
-                    Label("Settings", systemImage: "gear")
+                    Label("Settings", systemImage: "gearshape")
                 }
         }
 
